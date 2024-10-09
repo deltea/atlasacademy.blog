@@ -6,6 +6,7 @@ import { formatDate, image } from "$lib/utils";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import type { InferGetStaticPropsType } from "astro";
 import { BLOCKS } from "@contentful/rich-text-types";
+import { PrismaClient } from "@prisma/client";
 
 import PostContent from "$components/PostContent.svelte";
 import Separator from "$components/Separator.svelte";
@@ -62,6 +63,16 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const { content, title, date, cover, destination, podcast } = Astro.props;
+
+const prisma = new PrismaClient();
+
+async function createComment(e: CustomEvent) {
+  return await prisma.comments.create({ ...e.detail });
+}
+
+const comments = await prisma.comments.findMany({
+  where: { slug }
+});
 ---
 
 <Layout {title} padding={false}>
@@ -78,9 +89,20 @@ const { content, title, date, cover, destination, podcast } = Astro.props;
   </PageCover>
 
   <div class="lg:mx-lg xl:mx-xl 2xl:mx-xxl m-xs">
-    <PostContent client:load {content} {podcast} />
+    <PostContent
+      client:load
+      {content}
+      {podcast}
+    />
+
     <Separator class="w-auto" />
-    <Comments client:visible {slug} />
+
+    <Comments
+      client:visible
+      {slug}
+      {comments}
+      on:createComment={createComment}
+    />
   </div>
 
   <PostNavigation {slug} />
