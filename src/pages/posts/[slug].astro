@@ -12,6 +12,7 @@ import PostContent from "$components/PostContent.svelte";
 import Separator from "$components/Separator.svelte";
 import PostNavigation from "$components/PostNavigation.astro";
 import Comments from "$components/Comments.svelte";
+import CommentForm from "$components/CommentForm.astro";
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
@@ -66,13 +67,19 @@ const { content, title, date, cover, destination, podcast } = Astro.props;
 
 const prisma = new PrismaClient();
 
-async function createComment(e: CustomEvent) {
-  return await prisma.comments.create({ ...e.detail });
+async function createComment(data: {
+  slug: string;
+  name: string;
+  text: string;
+}) {
+  console.log(data);
+  return await prisma.comments.create({ data });
 }
 
 const comments = await prisma.comments.findMany({
   where: { slug }
 });
+
 ---
 
 <Layout {title} padding={false}>
@@ -95,14 +102,15 @@ const comments = await prisma.comments.findMany({
       {podcast}
     />
 
-    <Separator class="w-auto" />
+    <!-- <Separator class="w-auto" />
 
     <Comments
       client:visible
       {slug}
       {comments}
-      on:createComment={createComment}
     />
+
+    <CommentForm /> -->
   </div>
 
   <PostNavigation {slug} />
