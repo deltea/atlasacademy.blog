@@ -4,15 +4,13 @@ import Layout from "$layouts/Layout.astro"
 import { contentfulClient, type BlogPost } from "$lib/contentful";
 import { formatDate, image } from "$lib/utils";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import type { InferGetStaticPropsType } from "astro";
 import { BLOCKS } from "@contentful/rich-text-types";
-import { PrismaClient } from "@prisma/client";
+import type { InferGetStaticPropsType } from "astro";
 
 import PostContent from "$components/PostContent.svelte";
 import Separator from "$components/Separator.svelte";
 import PostNavigation from "$components/PostNavigation.astro";
 import Comments from "$components/Comments.svelte";
-import CommentForm from "$components/CommentForm.astro";
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
@@ -64,22 +62,6 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const { content, title, date, cover, destination, podcast } = Astro.props;
-
-const prisma = new PrismaClient();
-
-async function createComment(data: {
-  slug: string;
-  name: string;
-  text: string;
-}) {
-  console.log(data);
-  return await prisma.comments.create({ data });
-}
-
-const comments = await prisma.comments.findMany({
-  where: { slug }
-});
-
 ---
 
 <Layout {title} padding={false}>
@@ -96,21 +78,11 @@ const comments = await prisma.comments.findMany({
   </PageCover>
 
   <div class="lg:mx-lg xl:mx-xl 2xl:mx-xxl m-xs">
-    <PostContent
-      client:load
-      {content}
-      {podcast}
-    />
+    <PostContent client:load {content} {podcast} />
 
-    <!-- <Separator class="w-auto" />
+    <Separator class="w-auto" />
 
-    <Comments
-      client:visible
-      {slug}
-      {comments}
-    />
-
-    <CommentForm /> -->
+    <Comments client:visible {slug} />
   </div>
 
   <PostNavigation {slug} />

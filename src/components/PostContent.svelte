@@ -28,7 +28,7 @@
   }
 
   function layoutImages(groupIndex: number) {
-    console.log("Layout images", groupIndex);
+    // console.log("Layout images", groupIndex);
     const group = imageGroup[groupIndex];
     const imageTypes: ImageType[] = group.map(
       image => image.naturalWidth > image.naturalHeight ? "landscape" : "portrait"
@@ -89,7 +89,7 @@
     imageGroup.forEach((group, i) => {
       group.forEach(image => {
         image.onload = () => {
-          console.log("Image loaded", image.src, i);
+          // console.log("Image loaded", image.src, i);
           imagesLoaded[i]++;
           if (imagesLoaded[i] === group.length) {
             layoutImages(i);
