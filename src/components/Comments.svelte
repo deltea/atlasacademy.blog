@@ -41,7 +41,7 @@
 {#if comments.length > 0}
   <section class="mb-xs" id="comments">
     {#each comments as comment}
-      <div class="bg-neutral-100 dark:bg-neutral-800 p-xs rounded-lg mb-xs">
+      <div class="bg-neutral-100 dark:bg-neutral-600 py-xxs px-xs rounded-lg mb-xs space-y-1">
         <div class="flex justify-between items-center">
           <p class="text-sm font-semibold font-jost">
             {comment.name}
