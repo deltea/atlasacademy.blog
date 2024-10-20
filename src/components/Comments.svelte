@@ -33,7 +33,7 @@
 
   onMount(async () => {
     await getComments();
-    isLoading = true;
+    isLoading = false;
   });
 </script>
 
@@ -58,7 +58,7 @@
 {/if}
 
 {#if isLoading}
-  <p class="text-sm text-neutral-500 dark:text-neutral-400">
+  <p class="text-sm text-neutral-500 dark:text-neutral-400 p-sm">
     Loading...
   </p>
 {/if}
