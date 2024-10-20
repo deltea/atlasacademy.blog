@@ -161,6 +161,6 @@
 {/if}
 
 <!-- Liking and comments bar on posts only -->
-{#if isPost}
+<!-- {#if isPost}
   <PostBar show={isScrolledScreen && scrollDirection === "down" && !isScrolledContent} />
-{/if}
+{/if} -->
