@@ -23,6 +23,7 @@
     });
 
     console.log(response);
+    location.reload();
   }
 
   async function getComments() {
