@@ -11,6 +11,7 @@
 
   let text = "";
   let name = "";
+  let isLoading = true;
 
   async function postComment() {
     const response = await fetch("/api/comments", {
@@ -32,6 +33,7 @@
 
   onMount(async () => {
     await getComments();
+    let isLoading = true;
   });
 </script>
 
@@ -53,7 +55,7 @@
       </div>
     {/each}
   </section>
-{:else}
+{:else if isLoading}
   <p class="text-sm text-neutral-500 dark:text-neutral-400">
     Loading...
   </p>
