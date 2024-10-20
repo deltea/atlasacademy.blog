@@ -29,13 +29,13 @@
       {#if query}
         <button
           on:click={() => (query = "")}
-          class="text-xl flex items-center justify-center aspect-square ml-2"
+          class="text-xl flex items-center justify-center aspect-square mr-3"
         >
           <iconify-icon icon="mdi:close"></iconify-icon>
         </button>
       {/if}
 
-      <Popover.Root>
+      <!-- <Popover.Root>
         <Popover.Trigger class="flex items-center h-full gap-1 rounded-md px-xxs uppercase font-jost tracking-widest font-medium text-sm">
           <iconify-icon icon="mdi:filter-variant" class="text-xl"></iconify-icon>
           <span>Filter</span>
@@ -50,7 +50,7 @@
           </h2>
           <DestinationSearch />
         </Popover.Content>
-      </Popover.Root>
+      </Popover.Root> -->
     </div>
   </form>
 </div>
