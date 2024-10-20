@@ -44,9 +44,7 @@
             {comment.name}
           </p>
           <p class="text-xs text-neutral-500 dark:text-neutral-400">
-            {new Date(comment.created_at).getMonth() + 1}/
-            {new Date(comment.created_at).getDate()}/
-            {new Date(comment.created_at).getFullYear()}
+            {new Date(comment.created_at).getMonth() + 1}/{new Date(comment.created_at).getDate()}/{new Date(comment.created_at).getFullYear()}
           </p>
         </div>
         <p class="text-sm text-neutral dark:text-neutral-300">
@@ -55,6 +53,10 @@
       </div>
     {/each}
   </section>
+{:else}
+  <p class="text-sm text-neutral-500 dark:text-neutral-400">
+    Loading...
+  </p>
 {/if}
 
 <!-- Comment submit form -->
@@ -65,6 +67,7 @@
     <Label.Root for="text" class="uppercase tracking-widest font-semibold text-sm font-jost" id="createComment">
       Add Comment*
     </Label.Root>
+
     <textarea
       class="block w-full outline-none p-2 bg-neutral-100 text-neutral"
       id="text"
