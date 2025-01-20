@@ -2,6 +2,8 @@
 import "@fontsource-variable/jost";
 import "../styles/global.css";
 
+import Analytics from "@vercel/analytics/astro"
+
 import Navbar from "$components/Navbar.svelte";
 import Footer from "$components/Footer.svelte";
 import { cn } from "$lib/utils";
@@ -52,5 +54,7 @@ const {
     </main>
 
     <Footer />
+
+    <Analytics />
 	</body>
 </html>
