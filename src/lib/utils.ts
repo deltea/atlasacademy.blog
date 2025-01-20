@@ -7,7 +7,7 @@ export function cn(...values: ClassValue[]) {
 
 export function image(url: string | undefined) {
   if (!url) return;
-  return `https:${url}?fm=jpg&w=600&h=1000`;
+  return `https:${url}?fm=jpg`;
 }
 
 export function formatDate(dateString: string) {

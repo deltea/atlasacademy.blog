@@ -56,6 +56,7 @@ export async function getStaticPaths() {
       }),
     },
   }));
+  console.log(new Array(pages.length).fill("").map((v, i) => pages[i].params.slug));
 
   return pages;
 }
