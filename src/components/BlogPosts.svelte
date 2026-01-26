@@ -35,9 +35,10 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query })
     }).then(response => response.json()) as Entry<BlogPost, "WITHOUT_UNRESOLVABLE_LINKS", string>[];
+    console.log(allPosts);
 
     const clampedPage = clamp(page - 1, 0);
-    posts = allPosts.slice(clampedPage * perPage, (clampedPage + 1) * perPage);
+    posts = allPosts.slice(clampedPage * perPage, clampedPage * perPage + perPage);
 
     loading = false;
   });

@@ -7,6 +7,7 @@ export const POST: APIRoute = async ({ request }) => {
   const data = await request.json();
 
   const entries = await contentfulClient.getEntries<BlogPost>({
+    limit: 1000,
     content_type: "blogPost",
     order: ["-fields.date"],
     "fields.title[match]": data.query
