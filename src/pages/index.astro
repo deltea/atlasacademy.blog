@@ -10,14 +10,14 @@ import Separator from "$components/Separator.svelte";
 const latestPodcastPosts = await contentfulClient.getEntries<BlogPost>({
   content_type: "blogPost",
   order: ["-fields.date"],
-  limit: 8,
+  limit: 10,
   "fields.type[all]": ["Podcast"],
 });
 
 const latestReflectionPosts = await contentfulClient.getEntries<BlogPost>({
   content_type: "blogPost",
   order: ["-fields.date"],
-  limit: 8,
+  limit: 10,
   "fields.type[all]": ["Reflection"],
 });
 ---
