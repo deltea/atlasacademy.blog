@@ -10,14 +10,14 @@ import Separator from "$components/Separator.svelte";
 const latestPodcastPosts = await contentfulClient.getEntries<BlogPost>({
   content_type: "blogPost",
   order: ["-fields.date"],
-  limit: 4,
+  limit: 8,
   "fields.type[all]": ["Podcast"],
 });
 
 const latestReflectionPosts = await contentfulClient.getEntries<BlogPost>({
   content_type: "blogPost",
   order: ["-fields.date"],
-  limit: 4,
+  limit: 8,
   "fields.type[all]": ["Reflection"],
 });
 ---
@@ -43,14 +43,14 @@ const latestReflectionPosts = await contentfulClient.getEntries<BlogPost>({
 
   <h1 class="uppercase font-jost tracking-widest font-semibold text-3xl mb-8">Recent Posts</h1>
 
-  <section class="grid lg:grid-cols-4 grid-cols-1 gap-4">
+  <section class="flex overflow-x-auto overflow-y-hidden gap-4">
     {latestPodcastPosts.items.map(item => (
       <a
         href={`/posts/${item.fields.slug}`}
-        class="aspect-square bg-cover bg-center relative hover:rotate-1 duration-200"
+        class="size-80 aspect-square bg-cover bg-center relative hover:rotate-1 duration-200"
         style={{ backgroundImage: `url('${image(item.fields.cover?.fields.file?.url)}')` }}
       >
-        <div class="absolute bottom-0 bg-gradient-to-t from-neutral duration-150 h-40 w-full"></div>
+        <div class="absolute size-full bottom-0 bg-gradient-to-t from-neutral duration-150"></div>
 
         <div class="w-full p-6 absolute bottom-0 left-0 text-white">
           <h3 class="text-sm font-bold">{item.fields.title}</h3>
@@ -64,14 +64,14 @@ const latestReflectionPosts = await contentfulClient.getEntries<BlogPost>({
 
   <h1 class="uppercase font-jost tracking-widest font-semibold text-3xl mb-8">Recent Reflections</h1>
 
-  <section class="grid lg:grid-cols-4 grid-cols-1 gap-4">
+  <section class="flex overflow-x-auto overflow-y-hidden gap-4">
     {latestReflectionPosts.items.map(item => (
       <a
         href={`/posts/${item.fields.slug}`}
-        class="aspect-square bg-cover bg-center relative hover:rotate-1 duration-200"
+        class="size-80 aspect-square bg-cover bg-center relative hover:rotate-1 duration-200"
         style={{ backgroundImage: `url('${image(item.fields.cover?.fields.file?.url)}')` }}
       >
-        <div class="absolute bottom-0 bg-gradient-to-t from-neutral duration-150 h-40 w-full"></div>
+        <div class="absolute size-full bottom-0 bg-gradient-to-t from-neutral duration-150"></div>
 
         <div class="w-full p-6 absolute bottom-0 left-0 text-white">
           <h3 class="text-sm font-bold">{item.fields.title}</h3>
