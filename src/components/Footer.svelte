@@ -73,13 +73,5 @@
 </footer>
 
 <section class="bg-neutral flex justify-center items-center text-white font-mono text-xs h-5">
-  <p>Made by <span class="italic">Leo</span> with</p>
-
-  <a href="https://astro.build" target="_blank" class="mx-1 flex items-center">
-    <iconify-icon icon="devicon-plain:astro" class="text-sm"></iconify-icon>
-  </a>
-  <span>&</span>
-  <a href="https://svelte.dev" target="_blank" class="mx-1 flex items-center">
-    <iconify-icon icon="devicon-plain:svelte" class="text-sm"></iconify-icon>
-  </a>
+  <p>Made by <a href="https://deltea.space" class="italic">leo</a></p>
 </section>
