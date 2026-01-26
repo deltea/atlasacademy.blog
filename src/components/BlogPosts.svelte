@@ -71,7 +71,7 @@
     />
   {:else}
     <div class="flex justify-center items-center font-semibold text-xl">
-      Sorry, it looks like no posts were found for your search :(
+      Sorry, it looks like no posts were found for your search
     </div>
   {/if}
 {/if}

@@ -8,7 +8,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const entries = await contentfulClient.getEntries<BlogPost>({
     content_type: "blogPost",
-    order: ["fields.date"],
+    order: ["-fields.date"],
     "fields.title[match]": data.query
   });
 
