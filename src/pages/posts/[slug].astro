@@ -17,6 +17,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 export async function getStaticPaths() {
   const entries = await contentfulClient.getEntries<BlogPost>({
     content_type: "blogPost",
+    limit: 1000
   });
 
   const pages = entries.items.map(item => ({
